@@ -27,7 +27,12 @@ Available parameters:
   * `height`: passed to `linear_extrude` as height, default value is `0`
   * `center`: passed to `import`, default value is `false`
   * `linex_scale`: passed to `linear_extrude` as scale, default value is `1`
-  
+
+
+#### Difference
+
+to substract an object from the other objects the text `/*diff*/` has to be added to the layer name.
+
 
 ![](inkscape.png)
 

@@ -76,7 +76,24 @@
         <xsl:call-template name="block" >
             <xsl:with-param name="header" select="concat('module ',i2s:basename(.),'()')" />
             <xsl:with-param name="content">
-                <xsl:apply-templates select="svg:g" mode="openscad_main" />
+                <xsl:call-template name="block" >
+                    <xsl:with-param name="header" select="string('difference()')" />
+                    <xsl:with-param name="content" >
+                        <xsl:call-template name="block" >
+                            <xsl:with-param name="header" select="string('union()')" />
+                            <xsl:with-param name="content" >
+                                <xsl:apply-templates select="svg:g[not(contains(@inkscape:label, '/*diff*/'))]" mode="openscad_main" />
+                            </xsl:with-param>
+                        </xsl:call-template>
+                        <xsl:text>&#xa;</xsl:text>
+                        <xsl:call-template name="block" >
+                            <xsl:with-param name="header" select="string('union()')" />
+                            <xsl:with-param name="content" >
+                                <xsl:apply-templates select="svg:g[contains(@inkscape:label, '/*diff*/')]" mode="openscad_main" />
+                            </xsl:with-param>
+                        </xsl:call-template>
+                    </xsl:with-param>
+                </xsl:call-template>
             </xsl:with-param>
         </xsl:call-template>
         <xsl:text>&#xa;&#xa;&#xa;</xsl:text>
