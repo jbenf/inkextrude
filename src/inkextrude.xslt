@@ -51,19 +51,18 @@
     </xsl:template>
 
     <xsl:template match="svg:g" mode="openscad_functions">
-        <xsl:variable name="vals" select="fn:tokenize(@inkscape:label, ',')" />
 
         <xsl:text>&#xa;</xsl:text>
         <xsl:call-template name="block" >
-            <xsl:with-param name="header" select="concat('module ',i2s:basename(.),'_',@id,'()')" />
+            <xsl:with-param name="header" select="concat('module ',i2s:basename(.),'_',@id,'(x=0, y=0, z=0, height=0, center=false, linex_scale=1)')" />
             <xsl:with-param name="content">
                 <xsl:call-template name="block" >
-                    <xsl:with-param name="header" select="concat('translate([0,0,', $vals[1],'])')" />
+                    <xsl:with-param name="header" select="string('translate([x,y,z])')" />
                     <xsl:with-param name="content" >
                         <xsl:call-template name="block" >
-                            <xsl:with-param name="header" select="concat('linear_extrude(height = ', $vals[2], '-', $vals[1], ')')" />
+                            <xsl:with-param name="header" select="string('linear_extrude(height = height)')" />
                             <xsl:with-param name="content">
-                                <xsl:text>import("</xsl:text><xsl:value-of select="concat('svg_gen/',i2s:basename(.),'_', @id, '.svg')" /><xsl:text>");</xsl:text>
+                                <xsl:text>import("</xsl:text><xsl:value-of select="concat('svg_gen/',i2s:basename(.),'_', @id, '.svg')" /><xsl:text>", center=center);</xsl:text>
                             </xsl:with-param>
                         </xsl:call-template>
                     </xsl:with-param>
@@ -85,7 +84,7 @@
     </xsl:template>
 
     <xsl:template match="svg:g" mode="openscad_main">
-        <xsl:value-of select="concat(i2s:basename(.),'_',@id,'();')" />
+        <xsl:value-of select="concat(i2s:basename(.),'_',@id,'(', @inkscape:label,');')" />
         <xsl:text>&#xa;</xsl:text>
     </xsl:template >
 

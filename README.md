@@ -10,11 +10,24 @@ inkextrude is a simple `XSLT` script which generates an OpenSCAD script containi
 
 ### Inkscape
 
-layer naming:
+The layer name defined in inkscape is passed to the generated openscad function to change parameters. Therefore it has to be a valid openscad function argument definition.
 
-    {int Z1},{int Z2},here you can write,whatever,you,want
+Example:
+  
+    z=45, height=3 /*Text*/
 
-`Z1` is the height where the extrusion starts in milimeters, `Z2` is the height where the extrusion ends in milimeters.
+In this example the extrusion is extruded by 45 milimeters and the extrusion is 3 milimeters high. 
+In line comments are supported.
+
+Available parameters:
+
+  * `x`: passed to `translate` as x coordinate, default value is `0`
+  * `y`: passed to `translate` as y coordinate, default value is `0`
+  * `z`: passed to `translate` as z coordinate, default value is `0`
+  * `height`: passed to `linear_extrude` as height, default value is `0`
+  * `center`: passed to `import`, default value is `false`
+  * `linex_scale`: passed to `linear_extrude` as scale, default value is `1`
+  
 
 ![](inkscape.png)
 

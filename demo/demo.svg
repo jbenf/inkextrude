@@ -25,9 +25,9 @@
      inkscape:pageshadow="2"
      inkscape:zoom="0.9899495"
      inkscape:cx="-371.71723"
-     inkscape:cy="1368.4734"
+     inkscape:cy="1247.2551"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer2"
+     inkscape:current-layer="layer3"
      inkscape:document-rotation="0"
      showgrid="false"
      inkscape:window-width="2536"
@@ -49,7 +49,7 @@
     </rdf:RDF>
   </metadata>
   <g
-     inkscape:label="0,5, Rect"
+     inkscape:label="height=5 /*Rect*/"
      inkscape:groupmode="layer"
      id="layer1"
      style="display:inline">
@@ -75,7 +75,7 @@
   <g
      inkscape:groupmode="layer"
      id="layer2"
-     inkscape:label="5,45, Cylinder">
+     inkscape:label="z=5, height=40 /*Cylinder*/">
     <path
        id="path854"
        style="opacity:0.619;fill:#000000;fill-opacity:0.267671;stroke:#000000;stroke-width:0.308036;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -84,7 +84,7 @@
   <g
      inkscape:groupmode="layer"
      id="layer3"
-     inkscape:label="45,48, Text">
+     inkscape:label="z=45, height=3 /*Text*/">
     <g
        aria-label="Test"
        id="text884"
