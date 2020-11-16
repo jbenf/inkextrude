@@ -4,7 +4,9 @@ inkextrude is a simple `XSLT` script which generates an OpenSCAD script containi
 
 ## Requirements
 
-  * SAXON 9 HE `XSLT` processor. Any other `XSLT` 2.0 processor might work but this has not been verified.
+  * SAXON 9 (or newer) HE `XSLT` processor. Any other `XSLT` 2.0 processor might work but this has not been verified.
+
+  * OpenSCAD 2019.05 (or newer).
 
 ## Usage
 
@@ -42,6 +44,10 @@ Execute following command within the `demo` directory:
 
     saxon-xslt demo.svg ../src/inkextrude.xslt > demo.scad
 
+If the `saxon-xslt` wrapper is not available on your system try following command:
+
+    java -jar <path-to-saxon>/saxon-he-10.2.jar -s demo.svg -xsl ../src/inkextrude.xslt > demo.scad
+
 ![](openscad.png)
 
 ## Trouble Shooting
@@ -50,7 +56,6 @@ Execute following command within the `demo` directory:
 
 ### Known and unknown issues
 
-* Please don't use exotic input names, no blanks, to fancy characters.
-* It hasn't been tested on windows yet.
+* Please don't use exotic input names, no blanks, no dashes, no fancy characters.
 * Execute the `XSLT` script creates a directory with the name `svg_gen`
   in the executing directory. The generated `SCAD` file has to be in the same parent directory as the `svg_gen` directory, otherwise OpenSCAD will not be able to import the `SVG` files.
