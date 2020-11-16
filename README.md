@@ -18,7 +18,7 @@ Example:
   
     z=45, height=3 /*Text*/
 
-In this example the extrusion is extruded by 45 milimeters and the extrusion is 3 milimeters high. 
+In this example the extrusion is extruded by 45 millimetres and the extrusion is 3 millimetres high.
 In line comments are supported.
 
 Available parameters:
@@ -33,7 +33,7 @@ Available parameters:
 
 #### Difference
 
-to substract an object from the other objects the text `/*diff*/` has to be added to the layer name.
+to subtract an object from the other objects the text `/*diff*/` has to be added to the layer name.
 
 
 ![](inkscape.png)
