@@ -60,7 +60,7 @@
                     <xsl:with-param name="header" select="string('translate([x,y,z])')" />
                     <xsl:with-param name="content" >
                         <xsl:call-template name="block" >
-                            <xsl:with-param name="header" select="string('linear_extrude(height = height)')" />
+                            <xsl:with-param name="header" select="string('linear_extrude(height = height, scale=linex_scale)')" />
                             <xsl:with-param name="content">
                                 <xsl:text>import("</xsl:text><xsl:value-of select="concat('svg_gen/',i2s:basename(.),'_', @id, '.svg')" /><xsl:text>", center=center);</xsl:text>
                             </xsl:with-param>
