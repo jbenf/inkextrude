@@ -46,7 +46,7 @@ Execute following command within the `demo` directory:
 
 If the `saxon-xslt` wrapper is not available on your system try following command:
 
-    java -jar <path-to-saxon>/saxon-he-10.2.jar -s demo.svg -xsl ../src/inkextrude.xslt > demo.scad
+    java -jar <path-to-saxon>/saxon-he-10.2.jar -s:demo.svg -xsl:../src/inkextrude.xslt > demo.scad
 
 ![](openscad.png)
 
