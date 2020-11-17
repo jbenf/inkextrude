@@ -26,6 +26,9 @@ Available parameters:
   * `x`: passed to `translate` as x coordinate, default value is `0`
   * `y`: passed to `translate` as y coordinate, default value is `0`
   * `z`: passed to `translate` as z coordinate, default value is `0`
+  * `rot_x`: passed to `rotate` as rotation angle, default value is `0`
+  * `rot_y`: passed to `rotate` as rotation angle, default value is `0`
+  * `rot_z`: passed to `rotate` as rotation angle, default value is `0`
   * `height`: passed to `linear_extrude` as height, default value is `0`
   * `center`: passed to `import`, default value is `false`
   * `linex_scale`: passed to `linear_extrude` as scale, default value is `1`

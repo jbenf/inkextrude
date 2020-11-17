@@ -54,15 +54,20 @@
 
         <xsl:text>&#xa;</xsl:text>
         <xsl:call-template name="block" >
-            <xsl:with-param name="header" select="concat('module ',i2s:basename(.),'_',@id,'(x=0, y=0, z=0, height=0, center=false, linex_scale=1)')" />
+            <xsl:with-param name="header" select="concat('module ',i2s:basename(.),'_',@id,'(x=0, y=0, z=0, height=0, center=false, linex_scale=1, rot_x=0, rot_y=0, rot_z=0)')" />
             <xsl:with-param name="content">
                 <xsl:call-template name="block" >
                     <xsl:with-param name="header" select="string('translate([x,y,z])')" />
                     <xsl:with-param name="content" >
                         <xsl:call-template name="block" >
-                            <xsl:with-param name="header" select="string('linear_extrude(height = height, scale=linex_scale)')" />
+                            <xsl:with-param name="header" select="string('rotate([rot_x, rot_y, rot_z])')" />
                             <xsl:with-param name="content">
-                                <xsl:text>import("</xsl:text><xsl:value-of select="concat('svg_gen/',i2s:basename(.),'_', @id, '.svg')" /><xsl:text>", center=center);</xsl:text>
+                                <xsl:call-template name="block" >
+                                    <xsl:with-param name="header" select="string('linear_extrude(height = height, scale=linex_scale)')" />
+                                    <xsl:with-param name="content">
+                                        <xsl:text>import("</xsl:text><xsl:value-of select="concat('svg_gen/',i2s:basename(.),'_', @id, '.svg')" /><xsl:text>", center=center);</xsl:text>
+                                    </xsl:with-param>
+                                </xsl:call-template>
                             </xsl:with-param>
                         </xsl:call-template>
                     </xsl:with-param>
