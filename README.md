@@ -40,6 +40,7 @@ Available parameters:
       - `0`: Chamfer
       - `1`: Convex Fillet
       - `2`: Concave Fillet
+      - `3`: Simple Chamfer, only works with convex paths
 
 
 #### Difference

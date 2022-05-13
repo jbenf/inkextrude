@@ -94,14 +94,34 @@ module chamfer_contour(delta, height, type=0) {
 
 module chamfer_extrude(height, chamfer_delta, chamfer_z, type=0, chamfer_top=true, chamfer_bottom=false)
 {
-  minkowski() {
-    translate([0, 0, chamfer_bottom ? chamfer_z : 0]) {
-      linear_extrude(height=height-chamfer_z*(chamfer_top &amp;&amp; chamfer_bottom ? 2 : 1),convexity=5) offset(delta=-chamfer_delta) children();
-    };
-    chamfer_contour_prepare(top=chamfer_top, bottom=chamfer_bottom)
-    chamfer_contour(delta=chamfer_delta, height=chamfer_z, type=type);
+  if (type &lt;= 2) {
+    minkowski() {
+      translate([0, 0, chamfer_bottom ? chamfer_z : 0]) {
+        linear_extrude(height=height-chamfer_z*(chamfer_top &amp;&amp; chamfer_bottom ? 2 : 1),convexity=5) offset(delta=-chamfer_delta) children();
+      };
+      chamfer_contour_prepare(top=chamfer_top, bottom=chamfer_bottom)
+      chamfer_contour(delta=chamfer_delta, height=chamfer_z, type=type);
+    }
+  }
+  else if (type == 3) {
+    hull(){
+      if (chamfer_bottom) {
+        linear_extrude(height=0.001)
+        offset(delta=-chamfer_delta) children();
+      };
+      translate([0, 0, chamfer_bottom ? chamfer_z : 0]) {
+        linear_extrude(height=height-chamfer_z*(chamfer_top &amp;&amp; chamfer_bottom ? 2 : 1),convexity=5) children();
+      };
+      if (chamfer_top) {
+        translate([0, 0, height-0.001]) {
+          linear_extrude(height=0.001)
+          offset(delta=-chamfer_delta) children();
+        }
+      };
+    }
   }
 }
+   
         </xsl:text>
     </xsl:template>
 
