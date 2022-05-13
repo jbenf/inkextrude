@@ -120,7 +120,7 @@ module extrude_svg_layer(x=0, y=0, z=0, height=0, center=false, linex_scale=1,
           import(svg, center=center);
         }
       } else {
-        linear_extrude(height = height-chamfer_z, scale=linex_scale) {
+        linear_extrude(height = height, scale=linex_scale) {
           import(svg, center=center);
         };
       }
