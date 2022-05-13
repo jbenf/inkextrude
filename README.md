@@ -31,7 +31,15 @@ Available parameters:
   * `rot_z`: passed to `rotate` as rotation angle, default value is `0`
   * `height`: passed to `linear_extrude` as height, default value is `0`
   * `center`: passed to `import`, default value is `false`
-  * `linex_scale`: passed to `linear_extrude` as scale, default value is `1`
+  * `linex_scale`: passed to `linear_extrude` as scale, default value is `1`. Don't mix with `chamfer_delta`
+  * `chamfer_delta` : used to create a chamfer, default value is `2` (mm). Don't mix with `linex_scale`
+  * `chamfer_z`: height of the chamfer edgem default value is `chamfer_delta`
+  * `chamfer_top`: add chamfer to the top, default is `false`
+  * `chamfer_bottom`: add chamfer to the bottom, default is `false`
+  * `chamfer_type`: set the contour of the chamfer, default is `0`
+      - `0`: Chamfer
+      - `1`: Convex Fillet
+      - `2`: Concave Fillet
 
 
 #### Difference
