@@ -92,6 +92,38 @@ module chamfer_contour(delta, height, type=0) {
   
 }
 
+function chamfer_arc(x) = 1 - sqrt(1-x*x);
+function chamfer_arc_step(x) = (1-(1-x)*(1-x));
+
+module simple_chamfer(height, chamfer_delta, chamfer_z, chamfer_top=true, chamfer_bottom=false) {
+  hull(){
+    if (chamfer_bottom) {
+      n = $fn;
+      for (i = [0 : n] ) {
+        x = 1 - chamfer_arc_step(i / n);
+        translate([0, 0, chamfer_z * x]) {
+          linear_extrude(height=0.001)
+          offset(delta=-chamfer_delta * chamfer_arc(1-x)) children();
+        } 
+      }
+    };
+    translate([0, 0, chamfer_bottom ? chamfer_z : 0]) {
+      linear_extrude(height=height-chamfer_z*(chamfer_top &amp;&amp; chamfer_bottom ? 2 : 1),convexity=5) children();
+    };
+    
+    if (chamfer_top) {
+      n = $fn;
+      for (i = [0 : n] ) {
+        x = chamfer_arc_step(i / n);
+        translate([0, 0, height-0.001 - chamfer_z + chamfer_z * x]) {
+          linear_extrude(height=0.001)
+          offset(delta=-chamfer_delta * chamfer_arc(x)) children();
+        } 
+      }
+    };
+  }
+}
+
 module chamfer_extrude(height, chamfer_delta, chamfer_z, type=0, chamfer_top=true, chamfer_bottom=false)
 {
   if (type &lt;= 2) {
@@ -104,21 +136,7 @@ module chamfer_extrude(height, chamfer_delta, chamfer_z, type=0, chamfer_top=tru
     }
   }
   else if (type == 3) {
-    hull(){
-      if (chamfer_bottom) {
-        linear_extrude(height=0.001)
-        offset(delta=-chamfer_delta) children();
-      };
-      translate([0, 0, chamfer_bottom ? chamfer_z : 0]) {
-        linear_extrude(height=height-chamfer_z*(chamfer_top &amp;&amp; chamfer_bottom ? 2 : 1),convexity=5) children();
-      };
-      if (chamfer_top) {
-        translate([0, 0, height-0.001]) {
-          linear_extrude(height=0.001)
-          offset(delta=-chamfer_delta) children();
-        }
-      };
-    }
+    simple_chamfer(height, chamfer_delta, chamfer_z, chamfer_top, chamfer_bottom) children();
   }
 }
    

@@ -40,7 +40,7 @@ Available parameters:
       - `0`: Chamfer
       - `1`: Convex Fillet
       - `2`: Concave Fillet
-      - `3`: Simple Chamfer, only works with convex paths
+      - `3`: Simple Fillet, only works with convex paths. You can create a chamfer by adding $fn=1 (default is 10)
 
 
 #### Difference
