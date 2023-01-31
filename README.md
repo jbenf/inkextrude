@@ -41,11 +41,8 @@ Available parameters:
       - `1`: Convex Fillet
       - `2`: Concave Fillet
       - `3`: Simple Fillet, only works with convex paths. You can create a chamfer by adding $fn=1 (default is 10)
+  * `diff`: if set to true the object will be substracted from the rest of the design, default is `false`
 
-
-#### Difference
-
-to subtract an object from the other objects the text `/*diff*/` has to be added to the layer name.
 
 
 ![](inkscape.png)

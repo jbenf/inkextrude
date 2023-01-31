@@ -147,7 +147,7 @@ module chamfer_extrude(height, chamfer_delta, chamfer_z, type=0, chamfer_top=tru
         <xsl:text>
 module extrude_svg_layer(x=0, y=0, z=0, height=0, center=false, linex_scale=1, 
                          rot_x=0, rot_y=0, rot_z=0, svg, chamfer_delta=2, chamfer_z=0, chamfer_type=0,
-                         chamfer_top=false, chamfer_bottom=false){
+                         chamfer_top=false, chamfer_bottom=false, diff=false){
   
   chamfer_z = chamfer_z &gt; 0 ? chamfer_z : chamfer_delta &lt; 0 ? -chamfer_delta : chamfer_delta;
   translate([x,y,z]) {
@@ -178,14 +178,14 @@ module extrude_svg_layer(x=0, y=0, z=0, height=0, center=false, linex_scale=1,
                         <xsl:call-template name="block" >
                             <xsl:with-param name="header" select="string('union()')" />
                             <xsl:with-param name="content" >
-                                <xsl:apply-templates select="svg:g[not(contains(@inkscape:label, '/*diff*/'))]" mode="openscad_main" />
+                                <xsl:apply-templates select="svg:g[not(contains(@inkscape:label, 'diff=true'))]" mode="openscad_main" />
                             </xsl:with-param>
                         </xsl:call-template>
                         <xsl:text>&#xa;</xsl:text>
                         <xsl:call-template name="block" >
                             <xsl:with-param name="header" select="string('union()')" />
                             <xsl:with-param name="content" >
-                                <xsl:apply-templates select="svg:g[contains(@inkscape:label, '/*diff*/')]" mode="openscad_main" />
+                                <xsl:apply-templates select="svg:g[contains(@inkscape:label, 'diff=true')]" mode="openscad_main" />
                             </xsl:with-param>
                         </xsl:call-template>
                     </xsl:with-param>
@@ -212,13 +212,6 @@ module extrude_svg_layer(x=0, y=0, z=0, height=0, center=false, linex_scale=1,
                 <xsl:with-param name="layerId"><xsl:value-of select="@id" /></xsl:with-param>
             </xsl:apply-templates>
         </xsl:result-document>
-    </xsl:template>
-
-    <xsl:template match="/" mode="extract" >
-        <xsl:param name="layerId" />
-        <xsl:apply-templates select="@*|node()" mode="extract">
-            <xsl:with-param name="layerId"><xsl:value-of select="$layerId" /></xsl:with-param>
-        </xsl:apply-templates>
     </xsl:template>
 
     <xsl:template match="@*|node()" mode="extract">

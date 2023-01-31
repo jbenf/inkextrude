@@ -5,7 +5,7 @@
    viewBox="0 0 210 297"
    version="1.1"
    id="svg8"
-   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
    sodipodi:docname="demo.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -36,19 +36,21 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="156.07143"
-     inkscape:cy="977.49999"
+     inkscape:cx="-140.35714"
+     inkscape:cy="988.92857"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer2"
+     inkscape:current-layer="layer3"
      inkscape:document-rotation="0"
      showgrid="false"
-     inkscape:window-width="1387"
+     inkscape:window-width="2456"
      inkscape:window-height="1082"
      inkscape:window-x="50"
      inkscape:window-y="71"
      inkscape:window-maximized="0"
      inkscape:snap-page="true"
-     inkscape:pagecheckerboard="0" />
+     inkscape:pagecheckerboard="0"
+     inkscape:showpageshadow="2"
+     inkscape:deskcolor="#d1d1d1" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -140,7 +142,7 @@
   <g
      inkscape:groupmode="layer"
      id="layer4"
-     inkscape:label="z=2, height=4, chamfer_delta=1.5, chamfer_bottom=true, $fn=5 /*diff*//*indention*/"
+     inkscape:label="z=2, height=4, chamfer_delta=1.5, chamfer_bottom=true, $fn=5, diff=true /*indention*/"
      style="display:inline">
     <path
        style="fill:#e6e6e6;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
