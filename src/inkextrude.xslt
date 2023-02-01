@@ -41,7 +41,7 @@
         <xsl:text>&#xa;&#xa;&#xa;</xsl:text>
         <xsl:apply-templates select="." mode="openscad_main" />
 
-        <xsl:apply-templates select="svg:g" mode="start_extract" />
+        <xsl:apply-templates select="*[contains(@inkscape:label, 'height=')]" mode="start_extract" />
     </xsl:template>
 
     <xsl:template name="openscad_header" >
@@ -177,16 +177,16 @@ module extrude_svg_layer(x=0, y=0, z=0, height=0, center=false, linex_scale=1,
                     <xsl:with-param name="header" select="string('difference()')" />
                     <xsl:with-param name="content" >
                         <xsl:call-template name="block" >
-                            <xsl:with-param name="header" select="if ( //svg:g[contains(@inkscape:label, 'intersect=true')] ) then string('intersection()') else string('union()')" />
+                            <xsl:with-param name="header" select="if ( //(svg:g|svg:ellipse|svg:rect|svg:path)[contains(@inkscape:label, 'intersect=true') and contains(@inkscape:label, 'height=')] ) then string('intersection()') else string('union()')" />
                             <xsl:with-param name="content" >
-                                <xsl:apply-templates select="svg:g[not(contains(@inkscape:label, 'diff=true'))]" mode="openscad_main" />
+                                <xsl:apply-templates select="(svg:g|svg:ellipse|svg:rect|svg:path)[not(contains(@inkscape:label, 'diff=true')) and contains(@inkscape:label, 'height=')]" mode="openscad_main" />
                             </xsl:with-param>
                         </xsl:call-template>
                         <xsl:text>&#xa;</xsl:text>
                         <xsl:call-template name="block" >
                             <xsl:with-param name="header" select="string('union()')" />
                             <xsl:with-param name="content" >
-                                <xsl:apply-templates select="svg:g[contains(@inkscape:label, 'diff=true')]" mode="openscad_main" />
+                                <xsl:apply-templates select="(svg:g|svg:ellipse|svg:rect|svg:path)[contains(@inkscape:label, 'diff=true') and contains(@inkscape:label, 'height=')]" mode="openscad_main" />
                             </xsl:with-param>
                         </xsl:call-template>
                     </xsl:with-param>
@@ -197,7 +197,7 @@ module extrude_svg_layer(x=0, y=0, z=0, height=0, center=false, linex_scale=1,
         <xsl:value-of select="concat(i2s:basename(.),'();')" />
     </xsl:template>
 
-    <xsl:template match="svg:g" mode="openscad_main">
+    <xsl:template match="svg:g|svg:ellipse|svg:rect|svg:path" mode="openscad_main">
         <xsl:value-of select="concat('extrude_svg_layer(', @inkscape:label, ', svg=&quot;svg_gen/',i2s:basename(.),'_', @id, '.svg&quot;);')" />
         <xsl:text>&#xa;</xsl:text>
     </xsl:template >
@@ -206,27 +206,27 @@ module extrude_svg_layer(x=0, y=0, z=0, height=0, center=false, linex_scale=1,
 
     <!-- Layer extract templates -->
 
-    <xsl:template match="svg:g" mode="start_extract" >
+    <xsl:template match="*" mode="start_extract" >
         <xsl:variable name="filename" select="concat('svg_gen/', i2s:basename(.), '_', @id,'.svg')" />
         <xsl:result-document href="{$filename}" format="xml">
             <xsl:apply-templates select="/" mode="extract">
-                <xsl:with-param name="layerId"><xsl:value-of select="@id" /></xsl:with-param>
+                <xsl:with-param name="id"><xsl:value-of select="@id" /></xsl:with-param>
             </xsl:apply-templates>
         </xsl:result-document>
     </xsl:template>
 
     <xsl:template match="@*|node()" mode="extract">
-        <xsl:param name="layerId" />
+        <xsl:param name="id" />
         <xsl:copy>
             <xsl:apply-templates select="@*|node()" mode="extract">
-                <xsl:with-param name="layerId"><xsl:value-of select="$layerId" /></xsl:with-param>
+                <xsl:with-param name="id"><xsl:value-of select="$id" /></xsl:with-param>
             </xsl:apply-templates>
         </xsl:copy>
     </xsl:template>
 
-    <xsl:template match="svg:g" mode="extract">
-        <xsl:param name="layerId" />
-        <xsl:if test="@id=$layerId">
+    <xsl:template match="svg:g|svg:ellipse|svg:rect|svg:path" mode="extract">
+        <xsl:param name="id" />
+        <xsl:if test="@id=$id">
             <xsl:copy-of select="." />
         </xsl:if>
     </xsl:template>
