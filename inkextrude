@@ -1,0 +1,165 @@
+#!/usr/bin/bash
+
+print_usage () {
+  >&2 cat << EOF
+inkextrude is a wrapper for https://github.com/jbenf/inkextrude
+
+usage: inkextrude [-d] [-w] <input.svg>
+
+    -d:     Use Docker Execution Mode
+    -w:     Watch Input File for changes
+    -f:     Force overwrite
+EOF
+}
+
+prepare_docker() {
+    echo "Preparing xslt3 Docker Image..."
+    pwd=$(dirname $(realpath $0))
+    pushd $pwd
+    dockerimage=$(docker build -q -f - . <<EOF
+FROM node:19.5.0-alpine3.17
+RUN npm i -g xslt3
+ADD ./src/inkextrude.xslt /inkextrude.xslt
+WORKDIR /out
+EOF
+    )
+    popd
+    if [ "$dockerimage" = "" ] ; then
+        echo "Image creation failed"
+        exit 8
+    fi
+    echo "Image created: $dockerimage"
+}
+
+cleanup() {
+    if [ "$dockermode" = true ] && [ "$dockerimage" != "" ] ; then
+        echo "Cleaning up Docker Image..."
+        docker image rm $dockerimage > /dev/null
+    fi
+}
+
+abort() {
+    echo "Aborting..."
+    cleanup
+    exit 7
+}
+
+transform() {
+    echo "Transforming..."
+    if [ "$dockermode" = true ] ; then
+        docker run -it --rm --user $(id -u):$(id -g) -v $outdir:/out $dockerimage xslt3 -xsl:/inkextrude.xslt -s:/out/$in_name > $outdir/$out_name
+    else
+        pwd=$(dirname $(realpath $0))
+        xslt3 -xsl:$pwd/src/inkextrude.xslt -s:$outdir/$in_name > $outdir/$out_name
+    fi
+    echo "done"
+}
+
+dockermode=false
+watchmode=false
+force=false
+dockerimage=""
+
+while getopts 'dwfh' opt; do
+  case "$opt" in
+    d)
+      echo "Using Docker Execution Mode"
+      dockermode=true
+      ;;
+
+    w)
+      echo "Watching"
+      watchmode=true
+      ;;
+    
+    f)
+      echo "Force overwrite"
+      force=true
+      ;;
+
+    ?|h)
+      print_usage
+      exit 1
+      ;;
+  esac
+done
+shift "$(($OPTIND -1))"
+
+inputfile="${@: -1}"
+extension="${inputfile##*.}"
+in_name=$(basename $inputfile)
+out_name=${in_name%.*}.scad
+outdir=$(realpath $(dirname $inputfile))
+
+
+if [ "$extension" != "svg" ] ; then
+    >&2 cat << EOF
+The input File has to be a SVG File
+
+EOF
+    print_usage
+    exit 2
+fi
+
+if [ "$force" = false ] ; then
+    fail=false
+    if test -f "$outdir/$out_name"; then
+        echo "$outdir/$out_name exists."
+        fail=true
+    fi
+    if test -d "$outdir/svg_gen"; then
+        echo "$outdir/svg_gen exists."
+        fail=true
+    fi
+
+    if [ "$fail" = true ] ; then
+        echo "You have to call inkextrude with '-f' to force overwrite."
+        exit 3
+    fi
+fi
+
+if [ "$dockermode" = true ] ; then
+    if ! command -v docker &> /dev/null
+    then
+        echo "Dependency 'docker' could not be found"
+        exit 4
+    fi
+else
+    if ! command -v xslt3 &> /dev/null
+    then
+        echo "Dependency 'xslt3' could not be found. Please install it with 'npm' globally or use the Docker execution method"
+        exit 5
+    fi
+fi
+
+if [ "$watchmode" = true ] ; then
+    if ! command -v watch &> /dev/null
+    then
+        echo "Dependency 'watch' could not be found"
+        exit 6
+    fi
+fi
+
+
+trap 'abort' SIGINT
+
+if [ "$dockermode" = true ] ; then
+    prepare_docker
+fi
+
+if [ "$watchmode" = true ] ; then
+    while true 
+    do
+        transform
+        echo "Watching for changes..."
+        watch -g stat $outdir/$in_name >/dev/null
+    done
+else
+    transform
+fi
+
+cleanup
+
+
+
+
