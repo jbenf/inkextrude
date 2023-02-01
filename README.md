@@ -4,7 +4,7 @@ inkextrude is a simple `XSLT` script which generates an OpenSCAD script containi
 
 ## Requirements
 
-  * SAXON 9 (or newer) HE `XSLT` processor. Any other `XSLT` 2.0 processor might work but this has not been verified.
+  * SAXON 9 (or newer) HE / B `XSLT` processor. Any other `XSLT` 2.0 processor might work but this has not been verified.
 
   * OpenSCAD 2019.05 (or newer).
 
@@ -49,13 +49,16 @@ Available parameters:
 
 ### Transformation
 
+My recommendation is to use the __NPM__ Package _xslt3_ - a wrapper for `SaxonJS`.
+
+Installation:
+
+    npm install -g xslt3
+
 Execute following command within the `demo` directory:
 
-    saxon-xslt demo.svg ../src/inkextrude.xslt > demo.scad
+    xslt3 -xsl:../src/inkextrude.xslt -s:demo.svg > demo.scad
 
-If the `saxon-xslt` wrapper is not available on your system try following command:
-
-    java -jar <path-to-saxon>/saxon-he-10.2.jar -s:demo.svg -xsl:../src/inkextrude.xslt > demo.scad
 
 ![](openscad.png)
 
