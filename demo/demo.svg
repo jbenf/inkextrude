@@ -36,10 +36,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="-140.35714"
-     inkscape:cy="988.92857"
+     inkscape:cx="-225.35714"
+     inkscape:cy="932.5"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer3"
+     inkscape:current-layer="layer2"
      inkscape:document-rotation="0"
      showgrid="false"
      inkscape:window-width="2456"
@@ -90,7 +90,7 @@
   <g
      inkscape:groupmode="layer"
      id="layer2"
-     inkscape:label="z=5, height=40, chamfer_delta=1, chamfer_z=5, chamfer_top=true /*Cylinder*/"
+     inkscape:label="z=5, height=40, chamfer_delta=1, chamfer_z=5, chamfer_top=true, preview=true /*Cylinder*/"
      style="display:inline">
     <path
        id="path854"

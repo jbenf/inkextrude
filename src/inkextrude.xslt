@@ -146,22 +146,35 @@ module chamfer_extrude(height, chamfer_delta, chamfer_z, type=0, chamfer_top=tru
 
     <xsl:template name="extrude_svg_layer_module" >
         <xsl:text>
+
+
+module handle_preview(preview, svg, center) {
+  if ($preview &amp;&amp; preview) {
+    % children();
+    # import(svg, center=center);
+  } else {
+    children();
+  }
+}
+
 module extrude_svg_layer(x=0, y=0, z=0, height=0, center=false, linex_scale=1, 
                          rot_x=0, rot_y=0, rot_z=0, svg, chamfer_delta=2, chamfer_z=0, chamfer_type=0,
-                         chamfer_top=false, chamfer_bottom=false, diff=false, intersect=false){
+                         chamfer_top=false, chamfer_bottom=false, diff=false, intersect=false, preview=false){
   
   chamfer_z = chamfer_z &gt; 0 ? chamfer_z : chamfer_delta &lt; 0 ? -chamfer_delta : chamfer_delta;
   translate([x,y,z]) {
     rotate([rot_x, rot_y, rot_z]) {
-      if (chamfer_delta != 0 &amp;&amp; (chamfer_top || chamfer_bottom)) {
-        chamfer_extrude(height=height, chamfer_delta=chamfer_delta, chamfer_z=chamfer_z, type=chamfer_type, 
-                        chamfer_top=chamfer_top, chamfer_bottom=chamfer_bottom) {
-          import(svg, center=center);
+      handle_preview(preview, svg, center) {
+        if (chamfer_delta != 0 &amp;&amp; (chamfer_top || chamfer_bottom)) {
+          chamfer_extrude(height=height, chamfer_delta=chamfer_delta, chamfer_z=chamfer_z, type=chamfer_type, 
+          chamfer_top=chamfer_top, chamfer_bottom=chamfer_bottom) {
+            import(svg, center=center);
+          }
+        } else {
+          linear_extrude(height = height, scale=linex_scale) {
+            import(svg, center=center);
+          };
         }
-      } else {
-        linear_extrude(height = height, scale=linex_scale) {
-          import(svg, center=center);
-        };
       }
     }
   }
