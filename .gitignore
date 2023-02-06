@@ -1,2 +1,2 @@
-demo/svg_gen
-demo/*.scad
+examples/svg_gen
+examples/*.scad

@@ -46,7 +46,7 @@ Available parameters:
 
 
 
-![](inkscape.png)
+![](doc/inkscape.png)
 
 ### __Transformation__
 
@@ -56,7 +56,7 @@ Installation:
 
     npm install -g xslt3
 
-Execute following command within the `demo` directory:
+Execute following command within the `examples` directory:
 
     xslt3 -xsl:../src/inkextrude.xslt -s:demo.svg > demo.scad
 
@@ -64,19 +64,19 @@ Execute following command within the `demo` directory:
 
 Alternatively you can use the included `inkextrude` wrapper. The result will be created in the same directory as the input file with the file extension `scad`.
 
-Transform demo/demo.svg using `xslt3`:
+Transform examples/demo.svg using `xslt3`:
 
-    ./inkextrude demo/demo.svg
+    ./inkextrude examples/demo.svg
 
-Transform demo/demo.svg using `docker`:
+Transform examples/demo.svg using `docker`:
 
-    ./inkextrude -d demo/demo.svg
+    ./inkextrude -d examples/demo.svg
 
 Watch the input file for changes and transform the input automatically:
 
-    ./inkextrude -w demo/demo.svg
+    ./inkextrude -w examples/demo.svg
 
-![](openscad.png)
+![](doc/openscad.png)
 
 ## Trouble Shooting
 
