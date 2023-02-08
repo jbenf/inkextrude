@@ -78,6 +78,15 @@ Watch the input file for changes and transform the input automatically:
 
 ![](doc/openscad.png)
 
+## Examples
+
+ *  [PSX Controller Port Case](https://www.printables.com/model/390353-psx-snac-adapter-case-for-mms)
+
+    ![](doc/example1.png)
+ *  [Menu Card Holder](https://www.printables.com/model/393308-menu-card-holder)
+
+    ![](doc/example2.png)
+
 ## Trouble Shooting
 
 * OpenSCAD can only extrude `SVG` objects which are paths. Embedded images or text has to be converted to paths.
