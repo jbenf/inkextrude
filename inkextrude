@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 print_usage () {
   >&2 cat << EOF
@@ -7,6 +7,7 @@ inkextrude is a wrapper for https://github.com/jbenf/inkextrude
 usage: inkextrude [-d] [-w] <input.svg>
 
     -d:     Use Docker Execution Mode
+    -r:     Rootless Docker Mode
     -w:     Watch Input File for changes
     -f:     Force overwrite
 EOF
@@ -47,7 +48,12 @@ abort() {
 transform() {
     echo "Transforming..."
     if [ "$dockermode" = true ] ; then
-        docker run -it --rm --user $(id -u):$(id -g) -v $outdir:/out $dockerimage xslt3 -xsl:/inkextrude.xslt -s:/out/$in_name > $outdir/$out_name
+        if [ "$rootless" = true ] ; then
+            group=""
+        else
+            group="--user $(id -u):$(id -g)"
+        fi
+        docker run -it --rm $group -v $outdir:/out:rw $dockerimage xslt3 -xsl:/inkextrude.xslt -s:/out/$in_name > $outdir/$out_name
     else
         pwd=$(dirname $(realpath $0))
         xslt3 -xsl:$pwd/src/inkextrude.xslt -s:$outdir/$in_name > $outdir/$out_name
@@ -60,12 +66,19 @@ dockermode=false
 watchmode=false
 force=false
 dockerimage=""
+rootless=false
 
-while getopts 'dwfh' opt; do
+while getopts 'drwfh' opt; do
   case "$opt" in
     d)
       echo "Using Docker Execution Mode"
       dockermode=true
+      ;;
+
+    r)
+      echo "Using Rootless Docker Execution Mode"
+      dockermode=true
+      rootless=true
       ;;
 
     w)
