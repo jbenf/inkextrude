@@ -90,7 +90,8 @@ module chamfer_contour(delta, height, type=0) {
 function chamfer_arc(x) = 1 - sqrt(1-x*x);
 function chamfer_arc_step(x) = (1-(1-x)*(1-x));
 
-module simple_chamfer(height=100, delta=10, z=10, top=true, bottom=false) {
+module simple_chamfer(height=100, delta=10, z=-1, top=true, bottom=false) {
+  z = z &lt; 0 ? delta : z;
   hull(){
     if (bottom) {
       n = $fn;
@@ -119,8 +120,9 @@ module simple_chamfer(height=100, delta=10, z=10, top=true, bottom=false) {
   }
 }
 
-module chamfer_extrude(height=100, delta=10, z=10, type=0, top=true, bottom=false)
+module chamfer_extrude(height=100, delta=10, z=-1, type=0, top=true, bottom=false)
 {
+  z = z &lt; 0 ? delta : z;
   if (type &lt;= 2) {
     minkowski() {
       translate([0, 0, bottom ? z : 0]) {
@@ -182,6 +184,9 @@ module chamfer_extrude(height=100, delta=10, z=10, type=0, top=true, bottom=fals
 
   <xsl:template match="//svg:ellipse|//svg:rect|//svg:path" >
     <xsl:text>&#xa;obj_</xsl:text><xsl:value-of select="@id" /><xsl:text>();</xsl:text>
+  </xsl:template >
+
+  <xsl:template match="*" >
   </xsl:template >
 
   <!-- Layer extract templates -->
