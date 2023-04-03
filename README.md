@@ -4,7 +4,7 @@
 
 ## Why?
 
-I like OpenSCAD, but I like Inkscape even more. The 3D OpenSCAD workflow never felt natural to me. Coming from Fusion360 I wanted to draw in 2D and extrude the Paths to generate my 3D models without having to work in multiple documents. The original idea of **inkextrude** was to abstract the complexity of OpenSCAD away and offer a very limited set of arguments for the path extrusion. But since my requirements exceeded the capabilities of **inkextrude** in every other design I created I decided to change the approach completely. In version 2 **inkextrude** translates the tree structure of the `SVG` to a more complexly OpenSCAD script. This offers almost the functionality of OpenSCAD which of course means that the user needs to know OpenSCAD to use **inkextrude**. Keep your [cheatsheet](http://openscad.org/cheatsheet/) close.
+I like OpenSCAD, but I like Inkscape even more. The 3D OpenSCAD workflow never felt natural to me. Coming from Fusion360 I wanted to draw in 2D and extrude the Paths to generate my 3D models without having to work in multiple documents. The original idea of **inkextrude** was to abstract the complexity of OpenSCAD away and offer a very limited set of arguments for the path extrusion. But since my requirements exceeded the capabilities of **inkextrude** in every other design I created I decided to change the approach completely. In version 2 **inkextrude** translates the tree structure of the `SVG` to a more complex OpenSCAD script. This offers almost the functionality of OpenSCAD which of course means that the user needs to know OpenSCAD to use **inkextrude**. Keep your [cheatsheet](http://openscad.org/cheatsheet/) close.
 
 ## Requirements
 
