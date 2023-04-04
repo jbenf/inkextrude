@@ -19,7 +19,7 @@ I like OpenSCAD, but I like Inkscape even more. The 3D OpenSCAD workflow never f
 
 ### Inkscape
 
-The magic happens mostly in the *Layers and Objects* view. _Layers_ and _Groups_ with a title starting with a paragraph character (`§`) will be translated to OpenSCAD commands. If the _Group_ has children these children will be added in curly brackets, otherwise the command will be terminated with a colon (`;`).
+The magic happens mostly in the *Layers and Objects* view. _Layers_ and _Groups_ with a title starting with a _at_ character (`@`) will be translated to OpenSCAD commands. If the _Group_ has children these children will be added in curly brackets, otherwise the command will be terminated with a colon (`;`).
 
 Special functions:
 
@@ -114,7 +114,7 @@ Watch the input file for changes and transform the input automatically:
 
 * Adding empty Groups is not possible in Inkscape. Adding or copying a path and creating a new Group with `ctrl+g` is a quick way to add a group. Just delete the path afterwards.
 * Add the paths first and create the needed tree structure with `ctrl+g` later.
-* You can add custom modules by adding extrusions to a Group named `§module <MODULE_NAME>()`. You even could add variables to this module and use them for the extrusion or other OpenSCAD commands. This is also very handy if you want to import the generated OpenSCAD script in a custom OpenSCAD script.
+* You can add custom modules by adding extrusions to a Group named `@module <MODULE_NAME>()`. You even could add variables to this module and use them for the extrusion or other OpenSCAD commands. This is also very handy if you want to import the generated OpenSCAD script in a custom OpenSCAD script.
 * Execute the `XSLT` script creates a directory with the name `svg_gen`
   in the executing directory. The generated `SCAD` file has to be in the same parent directory as the `svg_gen` directory, otherwise OpenSCAD will not be able to import the `SVG` files.
 

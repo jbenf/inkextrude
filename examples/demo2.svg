@@ -8,7 +8,7 @@
    version="1.1"
    id="svg5"
    inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
-   sodipodi:docname="v2.svg"
+   sodipodi:docname="demo2.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -24,81 +24,68 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.64693624"
-     inkscape:cx="-388.75547"
-     inkscape:cy="809.19876"
-     inkscape:window-width="1551"
-     inkscape:window-height="1007"
-     inkscape:window-x="45"
-     inkscape:window-y="77"
+     inkscape:zoom="1.829812"
+     inkscape:cx="-65.034003"
+     inkscape:cy="938.62101"
+     inkscape:window-width="1874"
+     inkscape:window-height="819"
+     inkscape:window-x="79"
+     inkscape:window-y="202"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg5" />
   <defs
      id="defs2" />
   <g
-     inkscape:label="§translate([30,20,10])"
+     inkscape:label="@translate([30,20,10])"
      id="layer1-3"
      style="display:inline">
     <g
-       inkscape:label="§rotate([30,30,30])"
+       inkscape:label="@rotate([30,30,30])"
        id="layer1-5-2">
       <g
          id="g865"
-         inkscape:label="§difference()">
+         inkscape:label="@difference()">
         <g
-           inkscape:label="§cylinder(d=10, h=10)"
+           inkscape:label="@cylinder(d=10, h=10)"
            id="layer1-3-3-3-9" />
         <g
-           inkscape:label="§union()"
+           inkscape:label="@union()"
            id="layer1-3-6-5-1-7">
           <g
-             inkscape:label="§cube([15,15,10], center = true)"
+             inkscape:label="@cube([15,15,10], center = true)"
              id="layer1-3-3-3-9-0" />
           <g
-             inkscape:label="§cylinder(d=3, h=90)"
+             inkscape:label="@cylinder(d=3, h=90)"
              id="layer1-3-6-5-1" />
         </g>
       </g>
       <g
          id="g804"
-         inkscape:label="§chamfer_extrude(bottom=true, delta=10, z=30, type=0, $fn=20)">
+         inkscape:label="@chamfer_extrude(bottom=true, delta=10, z=30, type=0, $fn=20)">
         <path
-           sodipodi:type="star"
-           style="fill:#000000;stroke-width:0.264583"
            id="path643"
-           inkscape:flatsided="false"
-           sodipodi:sides="5"
-           sodipodi:cx="67.216339"
-           sodipodi:cy="66.134262"
-           sodipodi:r1="31.305908"
-           sodipodi:r2="15.652955"
-           sodipodi:arg1="0.71045728"
-           sodipodi:arg2="1.3387758"
-           inkscape:rounded="0"
-           inkscape:randomized="0"
-           d="M 90.948213,86.551365 70.815648,81.367777 55.132073,95.013847 53.840653,74.264823 36.015978,63.565724 55.350402,55.92571 60.017722,35.667234 73.258472,51.694469 93.96771,49.873141 82.81652,67.418531 Z"
+           style="stroke-width:0.264583"
            inkscape:transform-center-x="2.224496"
            inkscape:transform-center-y="-0.79372262"
-           transform="translate(-33.063646,173.99743)" />
-        <ellipse
-           style="display:inline;fill:#000000;stroke-width:0.263383"
+           transform="translate(-33.063646,173.99743)"
+           d="M 90.948213,86.551365 70.815648,81.367777 55.132073,95.013847 53.840653,74.264823 36.015978,63.565724 55.350402,55.92571 60.017722,35.667234 73.258472,51.694469 93.96771,49.873141 82.81652,67.418531 Z" />
+        <path
            id="path138"
-           cx="75.508003"
-           cy="248.47618"
-           rx="30.220545"
-           ry="31.666506"
-           inkscape:label="circle1" />
+           style="display:inline;stroke-width:0.263383"
+           inkscape:label="circle1"
+           d="m 105.72855,248.47618 c 0,8.44074 -3.15165,16.11015 -8.289138,21.78662 -5.507215,6.085 -13.296376,9.87989 -21.931409,9.87989 -7.635944,0 -14.610429,-2.96754 -19.930403,-7.86206 -6.308218,-5.80372 -10.290143,-14.31682 -10.290142,-23.80445 10e-7,-9.00885 3.590186,-17.13905 9.353131,-22.90535 5.424687,-5.42784 12.774558,-8.76115 20.867414,-8.76115 9.557956,0 18.079561,4.64945 23.617305,11.90765 4.132402,5.41625 6.603242,12.2852 6.603242,19.75885 z"
+           sodipodi:nodetypes="sssssssss" />
       </g>
     </g>
   </g>
   <g
-     inkscape:label="§$fa=2"
+     inkscape:label="@$fa=2"
      id="layer1-3-6-7-6-2" />
   <g
-     inkscape:label="§$fs=0.2"
+     inkscape:label="@$fs=0.2"
      id="layer1-3-6-7-6-2-6" />
   <g
-     inkscape:label="§$fn=30"
+     inkscape:label="@$fn=30"
      id="layer1-3-6-7-6-2-3" />
   <rect
      style="display:inline;fill:#000000;stroke-width:0.264583"
@@ -110,5 +97,5 @@
      inkscape:label="rect300" />
   <g
      id="g176"
-     inkscape:label="§cube([0,0,0])" />
+     inkscape:label="@cube([0,0,0])" />
 </svg>

@@ -155,7 +155,7 @@ module chamfer_extrude(height=100, delta=10, z=-1, type=0, top=true, bottom=fals
     <xsl:text>  import("</xsl:text><xsl:value-of select="i2s:filename(.)" /><xsl:text>");&#xa;}&#xa;&#xa;</xsl:text>
   </xsl:template>
 
-  <xsl:template match="//svg:g[starts-with(@inkscape:label, '§')]" >
+  <xsl:template match="//svg:g[starts-with(@inkscape:label, '@')]" >
     <xsl:variable name="command" select="substring(@inkscape:label, 2)" />
     <xsl:choose>
       <xsl:when test="count(*) > 0">
@@ -176,7 +176,7 @@ module chamfer_extrude(height=100, delta=10, z=-1, type=0, top=true, bottom=fals
     </xsl:choose>
   </xsl:template>
 
-  <xsl:template match="//svg:g[not(starts-with(@inkscape:label, '§'))]" >
+  <xsl:template match="//svg:g[not(starts-with(@inkscape:label, '@'))]" >
     <xsl:apply-templates select="*">
       <xsl:sort select="position()" data-type="number" order="descending"/>
     </xsl:apply-templates>

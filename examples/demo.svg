@@ -35,17 +35,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="19.192898"
-     inkscape:cy="1004.5967"
+     inkscape:zoom="1.4"
+     inkscape:cx="235.71429"
+     inkscape:cy="925.71429"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="svg8"
      inkscape:document-rotation="0"
      showgrid="false"
-     inkscape:window-width="1902"
-     inkscape:window-height="1007"
-     inkscape:window-x="45"
-     inkscape:window-y="77"
+     inkscape:window-width="1734"
+     inkscape:window-height="1230"
+     inkscape:window-x="102"
+     inkscape:window-y="72"
      inkscape:window-maximized="0"
      inkscape:snap-page="true"
      inkscape:pagecheckerboard="0"
@@ -65,15 +65,15 @@
   </metadata>
   <g
      id="g622"
-     inkscape:label="§difference()">
+     inkscape:label="@difference()">
     <g
        id="g652"
-       inkscape:label="§translate([0,0,2])"
+       inkscape:label="@translate([0,0,2])"
        style="display:inline">
       <g
          inkscape:groupmode="layer"
          id="layer4"
-         inkscape:label="§chamfer_extrude(height=4, delta=1.5, z=2.8, bottom=true, top=false)"
+         inkscape:label="@chamfer_extrude(height=4, delta=1.5, z=2.8, bottom=true, top=false)"
          style="display:inline">
         <path
            style="fill:#e6e6e6;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -82,7 +82,7 @@
       </g>
     </g>
     <g
-       inkscape:label="§chamfer_extrude(height=5, delta=4, z=2, type=1, bottom=true)"
+       inkscape:label="@chamfer_extrude(height=5, delta=4, z=2, type=1, bottom=true)"
        inkscape:groupmode="layer"
        id="layer1"
        style="display:inline">
@@ -97,15 +97,16 @@
   </g>
   <g
      id="g1706"
-     inkscape:label="§translate([0,0,5]) chamfer_extrude(height=40, delta=1, z=5)">
+     inkscape:label="@translate([0,0,5]) chamfer_extrude(height=40, delta=1, z=5)">
     <path
        id="path854"
        style="display:inline;opacity:0.619;fill:#000000;fill-opacity:0.267671;stroke:#000000;stroke-width:0.308036;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 105.88187,227.76573 a 25.191093,24.663063 0 0 0 -25.19123,24.66309 25.191093,24.663063 0 0 0 25.19123,24.6631 25.191093,24.663063 0 0 0 25.19122,-24.6631 25.191093,24.663063 0 0 0 -25.19122,-24.66309 z m 2.51095,11.99927 3.24322,2.61379 4.07572,-0.85731 1.788,3.76204 4.04368,0.99633 -0.0212,4.1646 3.21117,2.65255 -1.82625,3.74344 1.74253,3.78271 -3.26956,2.58021 -0.0718,4.16409 -4.06538,0.90589 -1.87121,3.72121 -4.05556,-0.94774 -3.30057,2.54041 -3.2427,-2.61327 -4.07624,0.85679 -1.787481,-3.76153 -4.044202,-0.99632 0.0217,-4.16512 -3.21169,-2.65255 1.826763,-3.74293 -1.74253,-3.78323 3.269567,-2.57968 0.07132,-4.16461 4.065382,-0.90589 1.871201,-3.72121 4.05609,0.94774 z" />
+       d="m 105.88187,227.76573 c -6.655996,-4e-5 -12.709078,2.52722 -17.212724,6.65508 -4.910118,4.50042 -7.978495,10.90339 -7.978506,18.00801 -1e-5,6.58564 2.636461,12.56841 6.932426,16.99179 4.589392,4.72551 11.072716,7.67135 18.258804,7.67131 7.41403,4e-5 14.08,-3.13565 18.68976,-8.12633 4.04064,-4.37454 6.50145,-10.1743 6.50146,-16.53677 1e-5,-6.37468 -2.47026,-12.18449 -6.52473,-16.56193 -4.60892,-4.97605 -11.26493,-8.1012 -18.66649,-8.10116 z m 2.51095,11.99927 3.24322,2.61379 4.07572,-0.85731 1.788,3.76204 4.04368,0.99633 -0.0212,4.1646 3.21117,2.65255 -1.82625,3.74344 1.74253,3.78271 -3.26956,2.58021 -0.0718,4.16409 -4.06538,0.90589 -1.87121,3.72121 -4.05556,-0.94774 -3.30057,2.54041 -3.2427,-2.61327 -4.07624,0.85679 -1.787481,-3.76153 -4.044202,-0.99632 0.0217,-4.16512 -3.21169,-2.65255 1.826763,-3.74293 -1.74253,-3.78323 3.269567,-2.57968 0.07132,-4.16461 4.065382,-0.90589 1.871201,-3.72121 4.05609,0.94774 z"
+       sodipodi:nodetypes="cssscssscccccccccccccccccccccccccccccc" />
   </g>
   <g
      id="g1767"
-     inkscape:label="§translate([0,0,45]) linear_extrude(height=3)">
+     inkscape:label="@translate([0,0,45]) linear_extrude(height=3)">
     <g
        aria-label="12"
        transform="matrix(0.52167906,-0.91821574,0.70063879,0.68368172,0,0)"
@@ -145,8 +146,8 @@
   </g>
   <g
      id="g1161-6"
-     inkscape:label="§echo(fn = $fn)" />
+     inkscape:label="@echo(fn = $fn)" />
   <g
      id="g1008"
-     inkscape:label="§$fn=$preview ? 5 : 30" />
+     inkscape:label="@$fn=$preview ? 5 : 30" />
 </svg>
