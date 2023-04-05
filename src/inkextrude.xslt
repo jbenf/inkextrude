@@ -143,14 +143,14 @@ module chamfer_extrude(height=100, delta=10, z=-1, type=0, top=true, bottom=fals
   <xsl:template match="/" >
     <xsl:call-template name="openscad_header" />
     <xsl:call-template name="chamfer_modules" />
-    <xsl:apply-templates select="//svg:ellipse|//svg:rect|//svg:path" mode="object_functions" />
+    <xsl:apply-templates select="//svg:ellipse|//svg:circle|//svg:rect|//svg:path" mode="object_functions" />
     <xsl:apply-templates select="/svg:svg/*" >
       <xsl:sort select="position()" data-type="number" order="descending"/>
     </xsl:apply-templates>
-    <xsl:apply-templates select="//svg:ellipse|//svg:rect|//svg:path" mode="start_extract" />
+    <xsl:apply-templates select="//svg:ellipse|//svg:circle|//svg:rect|//svg:path" mode="start_extract" />
   </xsl:template>
 
-  <xsl:template match="svg:ellipse|svg:rect|svg:path" mode="object_functions">
+  <xsl:template match="svg:ellipse|svg:circle|svg:rect|svg:path" mode="object_functions">
     <xsl:text>module obj_</xsl:text><xsl:value-of select="@id" /><xsl:text>(){&#xa;</xsl:text>
     <xsl:text>  import("</xsl:text><xsl:value-of select="i2s:filename(.)" /><xsl:text>");&#xa;}&#xa;&#xa;</xsl:text>
   </xsl:template>
@@ -182,7 +182,7 @@ module chamfer_extrude(height=100, delta=10, z=-1, type=0, top=true, bottom=fals
     </xsl:apply-templates>
   </xsl:template>
 
-  <xsl:template match="//svg:ellipse|//svg:rect|//svg:path" >
+  <xsl:template match="//svg:ellipse|//svg:circle|//svg:rect|//svg:path" >
     <xsl:text>&#xa;obj_</xsl:text><xsl:value-of select="@id" /><xsl:text>();</xsl:text>
   </xsl:template >
 
