@@ -19,7 +19,12 @@
 
   <xsl:function name="i2s:filename" as="xs:string" >
     <xsl:param name="item" as="item()" />
-    <xsl:value-of select="concat('svg_gen/', i2s:basename($item), '_', $item/@id,'.svg')" />
+    <xsl:value-of select="concat('svg_gen/', i2s:basename($item), '_', replace($item/@id, '-', '_'),'.svg')" />
+  </xsl:function>
+
+  <xsl:function name="i2s:modulename" as="xs:string" >
+    <xsl:param name="item" as="item()" />
+    <xsl:value-of select="concat('obj_', replace($item/@id, '-', '_'))" />
   </xsl:function>
 
 
@@ -151,7 +156,7 @@ module chamfer_extrude(height=100, delta=10, z=-1, type=0, top=true, bottom=fals
   </xsl:template>
 
   <xsl:template match="svg:ellipse|svg:circle|svg:rect|svg:path" mode="object_functions">
-    <xsl:text>module obj_</xsl:text><xsl:value-of select="@id" /><xsl:text>(){&#xa;</xsl:text>
+    <xsl:text>module </xsl:text><xsl:value-of select="i2s:modulename(.)" /><xsl:text>(){&#xa;</xsl:text>
     <xsl:text>  import("</xsl:text><xsl:value-of select="i2s:filename(.)" /><xsl:text>");&#xa;}&#xa;&#xa;</xsl:text>
   </xsl:template>
 
@@ -183,7 +188,7 @@ module chamfer_extrude(height=100, delta=10, z=-1, type=0, top=true, bottom=fals
   </xsl:template>
 
   <xsl:template match="//svg:ellipse|//svg:circle|//svg:rect|//svg:path" >
-    <xsl:text>&#xa;obj_</xsl:text><xsl:value-of select="@id" /><xsl:text>();</xsl:text>
+    <xsl:text>&#xa;</xsl:text><xsl:value-of select="i2s:modulename(.)" /><xsl:text>();</xsl:text>
   </xsl:template >
 
   <xsl:template match="*" >
