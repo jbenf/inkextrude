@@ -117,4 +117,7 @@ Watch the input file for changes and transform the input automatically:
 * You can add custom modules by adding extrusions to a Group named `@module <MODULE_NAME>()`. You even could add variables to this module and use them for the extrusion or other OpenSCAD commands. This is also very handy if you want to import the generated OpenSCAD script in a custom OpenSCAD script.
 * Execute the `XSLT` script creates a directory with the name `svg_gen`
   in the executing directory. The generated `SCAD` file has to be in the same parent directory as the `svg_gen` directory, otherwise OpenSCAD will not be able to import the `SVG` files.
+* OpenSCAD does not support clones in `SVG` files
+* Set `Inkscape->View->Display Mode` to `Outline Overlay` and create you paths without Stroke
+* Working with Objects in Groups in Inkscape is a bit awkward, I figured that it helps to switch to the Path Mode (N) to select Paths and switch back to the Object Mode (S) helps 
 
