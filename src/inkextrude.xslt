@@ -218,7 +218,7 @@ module chamfer_extrude(height=100, delta=10, z=-1, type=0, top=true, bottom=fals
     </xsl:copy>
   </xsl:template>
 
-  <xsl:template match="svg:ellipse|svg:rect|svg:path" mode="extract">
+  <xsl:template match="svg:ellipse|svg:circle|svg:rect|svg:path" mode="extract">
     <xsl:param name="id" />
     <xsl:if test="@id=$id">
       <xsl:copy-of select="." />
