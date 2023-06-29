@@ -47,17 +47,21 @@ abort() {
 
 transform() {
     echo "Transforming..."
+    tmpfile=$(mktemp)
     if [ "$dockermode" = true ] ; then
         if [ "$rootless" = true ] ; then
             group=""
         else
             group="--user $(id -u):$(id -g)"
         fi
-        docker run -it --rm $group -v $outdir:/out:rw $dockerimage xslt3 -xsl:/inkextrude.xslt -s:/out/$in_name > $outdir/$out_name
+        docker run -it --rm $group -v $outdir:/out:rw $dockerimage xslt3 -xsl:/inkextrude.xslt -s:/out/$in_name > $tmpfile
     else
         pwd=$(dirname $(realpath $0))
-        xslt3 -xsl:$pwd/src/inkextrude.xslt -s:$outdir/$in_name > $outdir/$out_name
+        xslt3 -xsl:$pwd/src/inkextrude.xslt -s:$outdir/$in_name > $tmpfile
     fi
+
+    cat $tmpfile > $outdir/$out_name
+    rm $tmpfile
     
     echo "done"
 }

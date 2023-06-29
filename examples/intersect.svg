@@ -7,7 +7,7 @@
    viewBox="0 0 210 297"
    version="1.1"
    id="svg661"
-   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
    sodipodi:docname="intersect.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -25,39 +25,38 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="1.829812"
-     inkscape:cx="-44.266843"
-     inkscape:cy="1054.4799"
-     inkscape:window-width="1392"
+     inkscape:cx="-130.61451"
+     inkscape:cy="1055.2997"
+     inkscape:window-width="1734"
      inkscape:window-height="1230"
-     inkscape:window-x="133"
-     inkscape:window-y="45"
+     inkscape:window-x="102"
+     inkscape:window-y="72"
      inkscape:window-maximized="0"
-     inkscape:current-layer="layer2" />
+     inkscape:current-layer="g1884" />
   <defs
      id="defs658" />
   <g
-     inkscape:label="height=60"
-     inkscape:groupmode="layer"
-     id="layer1">
-    <ellipse
-       style="fill:#ff0000;stroke-width:0.212404"
-       id="path1155"
-       cx="0.30298156"
-       cy="280.41113"
-       rx="18.013313"
-       ry="22.744278" />
-  </g>
-  <g
-     inkscape:groupmode="layer"
-     id="layer2"
-     inkscape:label="height=80, rot_x=90, y=40, intersect=true"
-     transform="translate(-1.0920239,-23.77917)">
-    <ellipse
-       style="fill:#000080;stroke-width:0.264583"
-       id="path1087"
-       cx="10.014213"
-       cy="299.9873"
-       rx="13.326015"
-       ry="13.156034" />
+     id="g1884"
+     inkscape:label="@intersection()">
+    <g
+       inkscape:label="@linear_extrude(height=40)"
+       inkscape:groupmode="layer"
+       id="layer1">
+      <path
+         id="path1155"
+         style="fill:#ff0000;stroke-width:0.212404"
+         d="m 18.316295,280.41113 c 0,5.78764 -1.712096,11.07038 -4.531686,15.08481 -3.299959,4.69837 -8.1169218,7.65947 -13.48162744,7.65947 -9.94847886,0 -18.01331456,-10.18296 -18.01331356,-22.74428 -10e-7,-12.56132 8.0648347,-22.74428 18.01331356,-22.74428 6.53518934,0 12.25754444,4.39417 15.41489444,10.97016 1.649064,3.4346 2.598419,7.46437 2.598419,11.77412 z"
+         sodipodi:nodetypes="sssssss" />
+    </g>
+    <g
+       id="g1879"
+       inkscape:label="@translate([0,40,0]) rotate([90, 0, 0]) linear_extrude(80)">
+      <path
+         id="path1087"
+         style="fill:#000080;stroke-width:0.264583"
+         transform="translate(-1.0920239,-23.77917)"
+         d="m 23.340228,299.9873 c 1e-6,3.66136 -1.514992,6.97339 -3.959862,9.35843 -2.406916,2.34802 -5.715062,3.79761 -9.366153,3.79761 -3.7590249,0 -7.1545292,-1.53656 -9.57723644,-4.00819 -2.32068716,-2.36754 -3.74878106,-5.59305 -3.74877946,-9.14785 1.5e-6,-3.29183 1.2246229,-6.30129 3.24863036,-8.60855 2.44347024,-2.78544 6.05199574,-4.54748 10.07738554,-4.54748 4.059641,0 7.695294,1.79215 10.139506,4.6188 1.986917,2.2978 3.186508,5.27921 3.186509,8.53723 z"
+         sodipodi:nodetypes="sssssssss" />
+    </g>
   </g>
 </svg>
