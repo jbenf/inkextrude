@@ -147,11 +147,11 @@ module chamfer_extrude(height=100, delta=10, z=-1, type=0, top=true, bottom=fals
 
   <xsl:template match="/" >
     <xsl:call-template name="openscad_header" />
-    <xsl:call-template name="chamfer_modules" />
-    <xsl:apply-templates select="//svg:ellipse|//svg:circle|//svg:rect|//svg:path" mode="object_functions" />
     <xsl:apply-templates select="/svg:svg/*" >
       <xsl:sort select="position()" data-type="number" order="descending"/>
     </xsl:apply-templates>
+    <xsl:apply-templates select="//svg:ellipse|//svg:circle|//svg:rect|//svg:path" mode="object_functions" />
+    <xsl:call-template name="chamfer_modules" />
     <xsl:apply-templates select="//svg:ellipse|//svg:circle|//svg:rect|//svg:path" mode="start_extract" />
   </xsl:template>
 
@@ -172,6 +172,10 @@ module chamfer_extrude(height=100, delta=10, z=-1, type=0, top=true, bottom=fals
             </xsl:apply-templates>
           </xsl:with-param>
         </xsl:call-template>
+      </xsl:when>
+      <xsl:when test="contains($command, '//')">
+        <xsl:text>&#xa;</xsl:text>
+        <xsl:value-of select="$command" />
       </xsl:when>
       <xsl:otherwise>
         <xsl:text>&#xa;</xsl:text>
